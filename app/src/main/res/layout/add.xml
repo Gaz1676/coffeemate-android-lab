@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/appLayoutTheme"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/full_background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        style="@style/appTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center" >
+
+        <RatingBar
+            android:id="@+id/coffeeRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:numStars="5"
+            android:progressTint="@color/bannerBGColor"
+            android:rating="2"
+            android:stepSize="0.5" />
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/coffeeRatingBar"
+            android:ems="10"
+            android:textColor="@android:color/white"
+            android:fontFamily="cursive"
+            android:inputType="textShortMessage"
+            tools:ignore="LabelFor">
+
+            <requestFocus />
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/shopEditText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/nameEditText"
+            android:layout_below="@+id/nameEditText"
+            android:textColor="@android:color/white"
+            android:fontFamily="cursive"
+            android:ems="10"
+            android:inputType="textShortMessage"
+            tools:ignore="LabelFor">
+        </EditText>
+
+        <TextView
+            android:id="@+id/ratingTextView"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="@string/coffeeRatingLbl"
+            android:textAlignment="center"
+            android:textColor="@color/activeFontColor"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_above="@+id/coffeeRatingBar"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:fontFamily="cursive"
+            android:gravity="top"
+            android:text="@string/coffeeNameLbl"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:textColor="@color/activeFontColor"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/nameEditText"
+            android:layout_alignBottom="@+id/nameEditText"
+            android:layout_toStartOf="@+id/nameEditText" />
+
+        <EditText
+            android:id="@+id/priceEditText"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/shopEditText"
+            android:layout_below="@+id/shopEditText"
+            android:textColor="@android:color/white"
+            android:fontFamily="cursive"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/shopTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:fontFamily="cursive"
+            android:text="@string/coffeeShopLbl"
+            android:textColor="@color/activeFontColor"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/shopEditText"
+            android:layout_alignBottom="@+id/shopEditText"
+            android:layout_alignStart="@+id/priceTextView" />
+
+        <TextView
+            android:id="@+id/priceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:fontFamily="cursive"
+            android:text="@string/coffeePriceLbl"
+            android:textColor="@color/activeFontColor"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_alignBaseline="@+id/priceEditText"
+            android:layout_alignBottom="@+id/priceEditText"
+            android:layout_alignStart="@+id/nameTextView" />
+
+        <Button
+            android:id="@+id/saveCoffeeBtn"
+            style="@android:style/Holo.Light.ButtonBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_save_todo"
+            android:fontFamily="cursive"
+            android:text="@string/saveCoffeeBtn"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_above="@+id/footerLinearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="35dp" />
+
+        <LinearLayout
+            android:id="@+id/footerLinearLayout"
+            style="@style/footer"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bannerBGColor" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:text="@string/appWebsite"
+                android:textColor="@color/bgColor" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

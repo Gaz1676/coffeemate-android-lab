@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/full_background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ie.cm.activities.Home"
+    tools:showIn="@layout/home">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/addACoffeeBtn"
+                style="@android:style/Holo.Light.ButtonBar"
+                android:layout_width="115dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:drawableTop="@drawable/ic_add_location"
+                android:fontFamily="cursive"
+                android:lineSpacingExtra="24sp"
+                android:onClick="add"
+                android:text="@string/addACoffeeLbl"
+                android:textAllCaps="false"
+                android:textColor="@color/bgColor"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/searchCoffeesBtn"
+                style="@android:style/Holo.Light.ButtonBar"
+                android:layout_width="115dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:drawableTop="@drawable/ic_list"
+                android:fontFamily="cursive"
+                android:lineSpacingExtra="24sp"
+                android:text="@string/searchCoffeesLbl"
+                android:textAllCaps="false"
+                android:textColor="@color/bgColor"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/favouritesCoffeeBtn"
+                style="@android:style/Holo.Light.ButtonBar"
+                android:layout_width="115dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:drawableTop="@drawable/ic_favourite_off"
+                android:fontFamily="cursive"
+                android:lineSpacingExtra="24sp"
+                android:text="@string/favouritesCoffeeLbl"
+                android:textAllCaps="false"
+                android:textColor="@color/bgColor"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/recentAddedBarTextView"
+            style="@style/banner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:text="@string/recentlyViewedLbl"
+            android:textColor="@color/inactiveBGColor"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ListView
+                android:id="@+id/coffeeList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@+id/fragment_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/footerLinearLayout"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true" />
+
+            <TextView
+                android:id="@+id/recentlyAddedListEmpty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_above="@+id/footerLinearLayout"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:text="@string/recentlyViewedListEmptyMessage"
+                android:textColor="@color/appFontColor" />
+
+            <LinearLayout
+                android:id="@+id/footerLinearLayout"
+                style="@style/footer"
+                android:layout_width="fill_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/bannerBGColor">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="10dip"
+                    android:text="@string/appWebsite"
+                    android:textColor="@color/bgColor" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
