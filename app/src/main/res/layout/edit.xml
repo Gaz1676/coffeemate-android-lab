@@ -72,7 +72,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
         android:text="@string/coffeeDetailsLbl"
-        android:textColor="#000000"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/inactiveBGColor"
         android:textSize="24sp"
         android:textStyle="bold" />
 
