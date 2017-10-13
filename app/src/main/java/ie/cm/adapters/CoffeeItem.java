@@ -18,6 +18,7 @@ public class CoffeeItem {
 
     public CoffeeItem(Context context, ViewGroup parent,
                       OnClickListener deleteListener, Coffee coffee) {
+
         // inflating the current row
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -36,8 +37,8 @@ public class CoffeeItem {
     private void updateControls(Coffee coffee) {
         ((TextView) view.findViewById(R.id.rowCoffeeName)).setText(coffee.name);
         ((TextView) view.findViewById(R.id.rowCoffeeShop)).setText(coffee.shop);
-        ((TextView) view.findViewById(R.id.rowPrice)).setText("€" +
-                new DecimalFormat("0.00").format(coffee.price));
+        ((TextView) view.findViewById(R.id.rowPrice)).setText("€" + new DecimalFormat("0.00")
+                .format(coffee.price));
         ((TextView) view.findViewById(R.id.rowRating)).setText("" + coffee.rating);
 
         ImageView imgIcon = (ImageView) view.findViewById(R.id.RowImage);

@@ -18,9 +18,9 @@ import ie.cm.models.Coffee;
 
 public class Base extends AppCompatActivity {
 
-    public static ArrayList<Coffee> coffeeList = new ArrayList<>();
-    protected Bundle activityInfo; // Used for persistence (of sorts)
-    protected CoffeeFragment coffeeFragment; // How we'll 'share' our List of Coffees between Activities
+    public static ArrayList<Coffee> 	coffeeList = new ArrayList<Coffee>();
+    protected Bundle            		activityInfo; // Used for persistence (of sorts)
+    public CoffeeFragment    		coffeeFragment; // How we'll 'share' our List of Coffees between Activities
 
     protected void goToActivity(Activity current,
                                 Class<? extends Activity> activityClass,
@@ -53,15 +53,18 @@ public class Base extends AppCompatActivity {
         return true;
     }
 
-    public void menuInfo(MenuItem m) {
+    public void menuInfo(MenuItem m)
+    {
         openInfoDialog(this);
     }
 
-    public void menuHelp(MenuItem m) {
+    public void menuHelp(MenuItem m)
+    {
         goToActivity(this, Help.class, null);
     }
 
-    public void menuHome(MenuItem m) {
+    public void menuHome(MenuItem m)
+    {
         goToActivity(this, Home.class, null);
     }
 

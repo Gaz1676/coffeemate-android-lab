@@ -7,19 +7,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ActionMode;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
 import ie.cm.R;
 import ie.cm.activities.Base;
 import ie.cm.activities.Edit;
+import ie.cm.activities.Favourites;
+import ie.cm.adapters.CoffeeFilter;
 import ie.cm.adapters.CoffeeListAdapter;
 import ie.cm.models.Coffee;
 
@@ -27,12 +27,14 @@ public class CoffeeFragment extends ListFragment implements OnClickListener, Abs
     protected Base activity;
     protected static CoffeeListAdapter listAdapter;
     protected ListView listView;
+    protected CoffeeFilter coffeeFilter;
 
     public CoffeeFragment() {
         // Required empty public constructor
     }
 
     public static CoffeeFragment newInstance() {
+        CoffeeFragment fragment = new CoffeeFragment();
         return new CoffeeFragment();
     }
 
@@ -45,23 +47,24 @@ public class CoffeeFragment extends ListFragment implements OnClickListener, Abs
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Notice that the OnClickListener parameter, is a reference to the class itself (this)
-        // so the CoffeeFragment class needs to implement this interface
-        listAdapter = new CoffeeListAdapter(activity, this, Base.coffeeList);
-        setListAdapter(listAdapter);
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View v = super.onCreateView(inflater, parent, savedInstanceState);
+    public void onResume() {
+        super.onResume();
 
-        listView = (ListView) v.findViewById(android.R.id.list);
-        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-        listView.setMultiChoiceModeListener(this);
+        listAdapter = new CoffeeListAdapter(activity, this, Base.coffeeList);
+        coffeeFilter = new CoffeeFilter(Base.coffeeList,"all",listAdapter);
 
-        return v;
+        if (getActivity() instanceof Favourites) {
+            coffeeFilter.setFilter("favourites"); // Set filter text field from 'all' to 'favourites'
+            coffeeFilter.filter(null); // Filter the data, but don't use any prefix
+            listAdapter.notifyDataSetChanged(); // Update the adapter
+        }
+
+        setListAdapter (listAdapter);
     }
+
 
     @Override
     public void onStart() {
@@ -73,12 +76,6 @@ public class CoffeeFragment extends ListFragment implements OnClickListener, Abs
         if (view.getTag() instanceof Coffee) {
             onCoffeeDelete((Coffee) view.getTag());
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((CoffeeListAdapter) getListAdapter()).notifyDataSetChanged();
     }
 
     @Override // this will execute every time a user selects a single row (or listItem) in the list
@@ -115,54 +112,50 @@ public class CoffeeFragment extends ListFragment implements OnClickListener, Abs
 
     /* ************ MultiChoiceModeListener methods (begin) *********** */
     @Override
-    public boolean onCreateActionMode(ActionMode actionMode, Menu menu)
-    {
+    public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = actionMode.getMenuInflater();
+        // inflates delete toolbar
         inflater.inflate(R.menu.delete_list_context, menu);
         return true;
     }
 
     @Override
-    public boolean onPrepareActionMode(ActionMode actionMode, Menu menu)
-    {
+    public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
         return false;
     }
 
     @Override
-    public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem)
-    {
-        switch (menuItem.getItemId())
-        {
+    public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            // gets delete bin icon
             case R.id.menu_item_delete_coffee:
+                // passes in action mode
                 deleteCoffees(actionMode);
                 return true;
             default:
                 return false;
         }
-
     }
 
-    private void deleteCoffees(ActionMode actionMode)
-    {
-        for (int i = listAdapter.getCount() - 1; i >= 0; i--)
-        {
-            if (listView.isItemChecked(i))
-            {
+    private void deleteCoffees(ActionMode actionMode) {
+        // removes reference of item from the list
+        for (int i = listAdapter.getCount() - 1; i >= 0; i--) {
+            if (listView.isItemChecked(i)) {
                 Base.coffeeList.remove(listAdapter.getItem(i));
             }
         }
         actionMode.finish();
+        // refreshes adapter and new list data
+        // if(activity instanceOf Favorites)
         listAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void onDestroyActionMode(ActionMode actionMode)
-    {
+    public void onDestroyActionMode(ActionMode actionMode) {
     }
 
     @Override
-    public void onItemCheckedStateChanged(ActionMode actionMode, int position, long id, boolean checked)
-    {
+    public void onItemCheckedStateChanged(ActionMode actionMode, int position, long id, boolean checked) {
     }
 
   /* ************ MultiChoiceModeListener methods (end) *********** */

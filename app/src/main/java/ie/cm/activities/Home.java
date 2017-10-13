@@ -1,5 +1,6 @@
 package ie.cm.activities;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,7 +13,7 @@ import ie.cm.fragments.CoffeeFragment;
 import ie.cm.models.Coffee;
 
 public class Home extends Base {
-
+    MediaPlayer mp;
     TextView recentList;
 
 
@@ -44,11 +45,25 @@ public class Home extends Base {
             }
         });
         setupCoffees();
+       mp = MediaPlayer.create(this, R.raw.open_door);
+       mp.start();
     }
 
+    // activity for add, search and favourites button
     public void add(View v) {
         goToActivity(this, Add.class, null);
     }
+
+    public void search(View v)
+    {
+        goToActivity(this,Search.class,null);
+    }
+
+    public void favourites(View v)
+    {
+        goToActivity(this,Favourites.class,null);
+    }
+
 
     @Override
     protected void onResume() {
@@ -59,11 +74,13 @@ public class Home extends Base {
         else
             recentList.setText(getString(R.string.recentlyViewedListEmptyMessage));
 
-        coffeeFragment = CoffeeFragment.newInstance(); //get a new Fragment instance
+        // gets a new Fragment instance
+        // adds & replaces it to the current activity
+        coffeeFragment = CoffeeFragment.newInstance();
         getFragmentManager()
                 .beginTransaction()
-                .add(R.id.fragment_layout, coffeeFragment)
-                .commit(); // add it to the current activity
+                .replace(R.id.fragment_layout, coffeeFragment)
+                .commit();
 
     }
 

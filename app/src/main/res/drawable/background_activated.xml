@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
+<!--
+    activated delete row color and state
+-->
+    <item
+        android:state_activated="true"
+        android:drawable="@color/appFooterBGColor"
+        />
     <item>
         <shape>
             <gradient android:startColor="#4C4C43"
