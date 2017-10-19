@@ -34,7 +34,7 @@
                     android:layout_width="300dp"
                     android:fontFamily="cursive"
                     android:text="The Title"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorFontPrimary"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="cursive"
             android:text="The Description..."
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorFontPrimary"
             android:textSize="24sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
@@ -139,7 +139,7 @@
                 android:ems="10"
                 android:fontFamily="cursive"
                 android:inputType="textShortMessage"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorFontPrimary"
                 android:textStyle="bold" />
 
             <EditText
@@ -151,7 +151,7 @@
                 android:ems="10"
                 android:fontFamily="cursive"
                 android:inputType="textShortMessage"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorFontPrimary"
                 android:textStyle="bold" />
 
             <TextView
@@ -190,7 +190,7 @@
                 android:ems="10"
                 android:fontFamily="cursive"
                 android:inputType="textShortMessage|numberDecimal"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorFontPrimary"
                 android:textStyle="bold" />
 
             <TextView
@@ -231,8 +231,8 @@
                 android:fontFamily="cursive"
                 android:onClick="update"
                 android:text="@string/updateCoffeeBtnLbl"
-                android:textColor="@android:color/white"
-                android:textColorLink="@android:color/white"
+                android:textColor="@color/colorFontPrimary"
+                android:textColorLink="@color/colorFontPrimary"
                 android:textStyle="bold" />
         </RelativeLayout>
     </RelativeLayout>

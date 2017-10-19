@@ -2,6 +2,8 @@ package ie.cm.activities;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,17 +12,22 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 import ie.cm.R;
 import ie.cm.fragments.CoffeeFragment;
-import ie.cm.models.Coffee;
+import ie.cm.fragments.HelpFragment;
+import ie.cm.main.CoffeeMateApp;
 
 public class Base extends AppCompatActivity {
 
-    public static ArrayList<Coffee> 	coffeeList = new ArrayList<Coffee>();
-    protected Bundle            		activityInfo; // Used for persistence (of sorts)
-    public CoffeeFragment    		coffeeFragment; // How we'll 'share' our List of Coffees between Activities
+    public static CoffeeMateApp	app;
+    protected Bundle         	activityInfo; // Used for persistence (of sorts)
+    protected CoffeeFragment coffeeFragment; // How we'll 'share' our List of Coffees between Activities
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        app = (CoffeeMateApp) getApplication();
+    }
 
     protected void goToActivity(Activity current,
                                 Class<? extends Activity> activityClass,
@@ -60,7 +67,11 @@ public class Base extends AppCompatActivity {
 
     public void menuHelp(MenuItem m)
     {
-        goToActivity(this, Help.class, null);
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment fragment = HelpFragment.newInstance();
+        ft.replace(R.id.homeFrame, fragment);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 
     public void menuHome(MenuItem m)

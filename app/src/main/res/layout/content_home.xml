@@ -4,143 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/full_background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="ie.cm.activities.Home"
-    tools:showIn="@layout/home">
+    android:background="@drawable/full_background"
+    tools:context=".activities.Home"
+    tools:showIn="@layout/app_bar_home">
+
+    <TextView
+        android:id="@+id/recentAddedBarTextView"
+        style="@style/banner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recentlyViewedLbl"
+        android:layout_gravity="center_vertical"
+        android:gravity="center" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:id="@+id/homeFrame"
+        android:layout_above="@+id/footerLinearLayout"
+        android:layout_below="@+id/recentAddedBarTextView" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <Button
-                android:id="@+id/addACoffeeBtn"
-                style="@android:style/Holo.Light.ButtonBar"
-                android:layout_width="115dp"
-                android:layout_height="140dp"
-                android:layout_gravity="center"
-                android:layout_margin="2dp"
-                android:drawableTop="@drawable/ic_add_location"
-                android:fontFamily="cursive"
-                android:lineSpacingExtra="24sp"
-                android:onClick="add"
-                android:text="@string/addACoffeeLbl"
-                android:textAllCaps="false"
-                android:textColor="@color/bgColor"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/searchCoffeesBtn"
-                style="@android:style/Holo.Light.ButtonBar"
-                android:layout_width="115dp"
-                android:layout_height="140dp"
-                android:layout_gravity="center"
-                android:layout_margin="2dp"
-                android:drawableTop="@drawable/ic_list"
-                android:fontFamily="cursive"
-                android:lineSpacingExtra="24sp"
-                android:text="@string/searchCoffeesLbl"
-                android:textAllCaps="false"
-                android:textColor="@color/bgColor"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:onClick="search"/>
-
-            <Button
-                android:id="@+id/favouritesCoffeeBtn"
-                style="@android:style/Holo.Light.ButtonBar"
-                android:layout_width="115dp"
-                android:layout_height="140dp"
-                android:layout_gravity="center"
-                android:layout_margin="2dp"
-                android:drawableTop="@drawable/ic_favourite_off"
-                android:fontFamily="cursive"
-                android:lineSpacingExtra="24sp"
-                android:text="@string/favouritesCoffeeLbl"
-                android:textAllCaps="false"
-                android:textColor="@color/bgColor"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:onClick="favourites"/>
-        </LinearLayout>
+        android:id="@+id/footerLinearLayout"
+        style="@style/footer"
+        android:background="@color/bannerBGColor"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
 
         <TextView
-            android:id="@+id/recentAddedBarTextView"
-            style="@style/banner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@color/colorPrimaryDark"
-            android:fontFamily="cursive"
             android:gravity="center"
-            android:text="@string/recentlyViewedLbl"
-            android:textColor="@color/inactiveBGColor"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <ListView
-                android:id="@+id/coffeeList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <FrameLayout
-                android:id="@+id/fragment_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/footerLinearLayout"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true" />
-
-            <TextView
-                android:id="@+id/recentlyAddedListEmpty"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_above="@+id/footerLinearLayout"
-                android:layout_alignParentEnd="true"
-                android:fontFamily="cursive"
-                android:gravity="center"
-                android:text="@string/recentlyViewedListEmptyMessage"
-                android:textColor="@color/bgColor"
-                android:textSize="24sp" />
-
-            <LinearLayout
-                android:id="@+id/footerLinearLayout"
-                style="@style/footer"
-                android:layout_width="fill_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:background="@color/bannerBGColor">
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingTop="10dip"
-                    android:text="@string/appWebsite"
-                    android:textColor="@color/bgColor" />
-            </LinearLayout>
-        </RelativeLayout>
-
+            android:paddingTop="10dip"
+            android:text="@string/appWebsite"
+            android:textColor="@color/bgColor" />
     </LinearLayout>
-
 </RelativeLayout>

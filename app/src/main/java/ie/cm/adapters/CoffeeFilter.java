@@ -8,11 +8,12 @@ import java.util.List;
 import ie.cm.models.Coffee;
 
 public class CoffeeFilter extends Filter {
-    private List<Coffee> originalCoffeeList;
-    private String filterText;
-    private CoffeeListAdapter adapter;
+    private List<Coffee> 		originalCoffeeList;
+    private String 				filterText;
+    private CoffeeListAdapter 	adapter;
 
-    public CoffeeFilter(List<Coffee> originalCoffeeList, String filterText, CoffeeListAdapter adapter) {
+    public CoffeeFilter(List<Coffee> originalCoffeeList, String filterText,
+                        CoffeeListAdapter adapter) {
         super();
         this.originalCoffeeList = originalCoffeeList;
         this.filterText = filterText;
@@ -23,16 +24,15 @@ public class CoffeeFilter extends Filter {
         this.filterText = filterText;
     }
 
-    // method that is implemented to filter the data
     @Override
     protected FilterResults performFiltering(CharSequence prefix) {
         FilterResults results = new FilterResults();
 
         if (originalCoffeeList == null) {
-            originalCoffeeList = new ArrayList<>();
+            originalCoffeeList = new ArrayList<Coffee>();
         }
         if (prefix == null || prefix.length() == 0) {
-            List<Coffee> newCoffees = new ArrayList<>();
+            List<Coffee> newCoffees = new ArrayList<Coffee>();
             if (filterText.equals("all")) {
                 results.values = originalCoffeeList;
                 results.count = originalCoffeeList.size();
@@ -47,7 +47,7 @@ public class CoffeeFilter extends Filter {
             }
         } else {
             String prefixString = prefix.toString().toLowerCase();
-            final ArrayList<Coffee> newCoffees = new ArrayList<>();
+            final ArrayList<Coffee> newCoffees = new ArrayList<Coffee>();
 
             for (Coffee c : originalCoffeeList) {
                 final String itemName = c.name.toLowerCase();
@@ -56,16 +56,13 @@ public class CoffeeFilter extends Filter {
                         newCoffees.add(c);
                     } else if (c.favourite) {
                         newCoffees.add(c);
-                    }
-                }
-            }
+                    }}}
             results.values = newCoffees;
             results.count = newCoffees.size();
         }
         return results;
     }
 
-    // method that is implemented to filter the results
     @SuppressWarnings("unchecked")
     @Override
     protected void publishResults(CharSequence prefix, FilterResults results) {

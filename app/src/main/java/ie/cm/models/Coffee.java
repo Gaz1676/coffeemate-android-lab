@@ -2,7 +2,8 @@ package ie.cm.models;
 
 import java.io.Serializable;
 
-public class Coffee implements Serializable {
+public class Coffee implements Serializable
+{
 
     public static int autoid = 1;
     public int coffeeId;
@@ -13,10 +14,10 @@ public class Coffee implements Serializable {
     public boolean favourite;
 
 
-    public Coffee() {
-    }
+    public Coffee() {}
 
-    public Coffee(String name, String shop, double rating, double price, boolean fav) {
+    public Coffee(String name, String shop, double rating, double price, boolean fav)
+    {
         this.coffeeId = autoid++;
         this.name = name;
         this.shop = shop;

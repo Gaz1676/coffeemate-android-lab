@@ -3,19 +3,24 @@ package ie.cm.main;
 import android.app.Application;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
+import ie.cm.db.DBManager;
 
-import ie.cm.models.Coffee;
-
-public class CoffeeMateApp extends Application
-{
-    public List <Coffee>  coffeeList = new ArrayList<Coffee>();
+public class CoffeeMateApp extends Application {
+    //public List <Coffee>  coffeeList = new ArrayList<Coffee>();
+    public DBManager  dbManager = new DBManager(this);
 
     @Override
     public void onCreate()
     {
         super.onCreate();
         Log.v("coffeemate", "CoffeeMate App Started");
+        dbManager.open();
+    }
+
+    @Override
+    public void onTerminate()
+    {
+        super.onTerminate();
+        dbManager.close();
     }
 }

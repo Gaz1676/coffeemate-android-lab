@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">CoffeeMate.2.0</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="action_settings">Settings</string>
     <string name="appHelpTitle">CoffeeMate Help</string>
     <string name="appHelp">This is the help screen for CoffeeMate</string>
@@ -8,8 +12,8 @@
     <string name="appDesc">CoffeeMate provides the user with a quick and easy way to manage a list of coffees and your favourite coffees.</string>
     <string name="appMoreInfo">For more information about CoffeeMate or to provide feedback please visit our website.</string>
     <string name="appAbout">About CoffeeMate</string>
-    <string name="appWebsite">ddrohan.gitbooks.io</string>
-    <string name="developer">Developed by Davey Drohan</string>
+    <string name="appWebsite">gary@fleming.ie</string>
+    <string name="developer">Re- developed by Gary Fleming</string>
 
     <string name="versionLabel">Current Version:</string>
     <string name="version">1</string>
@@ -28,11 +32,14 @@
     <string name="coffeeRatingLbl">Star Rating</string>
     <string name="coffeeDetailsLbl">Full Coffee Details</string>
     <string name="informationLbl">Information</string>
-    <string name="recentlyViewedListEmptyMessage">You have no Coffee\'s added, go have a coffee!</string>
+    <string name="recentlyViewedEmptyMessage">You have no Coffee\'s added, go have a coffee!</string>
     <string name="favouritesEmptyMessage">No Favourite Coffee\'s Yet !</string>
     <string name="searchCoffeeHint">Enter a Coffee Title</string>
     <string name="searchCoffeeTypePrompt">Choose a Type of Coffee</string>
     <string name="searchCoffeesResultsLbl">Search Results</string>
-    <string name="deleteCoffeesLbl">deleteCoffeeLbl</string>
-    <string name="menu">menu</string>
+    <string name="deleteCoffeesLbl">Delete Coffee</string>
+    <string name="menu">Menu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

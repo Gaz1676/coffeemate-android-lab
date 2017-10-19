@@ -16,18 +16,19 @@ public class CoffeeListAdapter extends ArrayAdapter<Coffee> {
     private OnClickListener deleteListener;
     public List<Coffee> coffeeList;
 
-    public CoffeeListAdapter(Context context, OnClickListener deleteListener, List<Coffee> coffeeList) {
+    public CoffeeListAdapter(Context context, OnClickListener deleteListener,
+                             List<Coffee> coffeeList) {
         super(context, R.layout.coffeerow, coffeeList);
+
         this.context = context;
         this.deleteListener = deleteListener;
         this.coffeeList = coffeeList;
     }
 
-    // automatically called for every object that exists in the underlying data (ie our coffeeList)
-    // should be returning a CoffeeItem reference
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        CoffeeItem item = new CoffeeItem(context, parent, deleteListener, coffeeList.get(position));
+        CoffeeItem item = new CoffeeItem(context, parent, deleteListener,
+                coffeeList.get(position));
         return item.view;
     }
 
@@ -35,23 +36,19 @@ public class CoffeeListAdapter extends ArrayAdapter<Coffee> {
     public int getCount() {
         return coffeeList.size();
     }
-
+    public List<Coffee> getCoffeeList() {
+        return this.coffeeList;
+    }
     @Override
     public Coffee getItem(int position) {
         return coffeeList.get(position);
     }
-
     @Override
     public long getItemId(int position) {
         return position;
     }
-
     @Override
     public int getPosition(Coffee c) {
         return coffeeList.indexOf(c);
-    }
-
-    public List<Coffee> getCoffeeList() {
-        return this.coffeeList;
     }
 }
